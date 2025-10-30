@@ -1,0 +1,14 @@
+.mapContainer {
+  height: 100%;
+  width: 100%;
+}
+
+.probeMarker {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: #3498db;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
