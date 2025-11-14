@@ -12,7 +12,7 @@ import styles from './DashboardPage.module.css';
 export default function DashboardPage() {
   return (
     <div className={styles.dashboard}>
-        <SideBar />
+        {/* <SideBar /> */}
         <h1>Farm Land Irrigation Dashboard</h1>
         <p>View and monitor your irrigation probes on the map below.</p>
         <MapComponent />

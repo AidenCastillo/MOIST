@@ -19,13 +19,18 @@ function ProbeComponent({ id, x, y, data }: { id: number; x: number; y: number; 
     }, [x, y, data]);
     return (
         <div ref={probeRef} className={styles.probeMarker} style={{ left: `${x}%`, top: `${y}%` }}>
-            {/* have probe number */}
             <button onClick={() => openProbeMenu()}>{id}</button>
         </div>
     );
     function openProbeMenu() {
         // open probeMenu.tsx
+        // if already open close and reopen with new data
+        const existingMenu = document.querySelector('#probe-menu-container');
+        if (existingMenu) {
+            document.body.removeChild(existingMenu);
+        }
         const menuContainer = document.createElement('div');
+        menuContainer.id = 'probe-menu-container';
         document.body.appendChild(menuContainer);
         const closeMenu = () => {
             document.body.removeChild(menuContainer);
