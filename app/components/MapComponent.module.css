@@ -1,14 +1,50 @@
 .mapContainer {
-  height: 100%;
+  position: relative;
   width: 100%;
+  min-height: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--surface);
+  box-shadow: 0 8px 28px rgba(2,6,23,0.08);
 }
 
 .probeMarker {
   position: absolute;
-  width: 24px;
-  height: 24px;
-  background-color: #3498db;
-  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 35% 35%, #fff6 0%, transparent 40%), var(--primary);
+  color: white;
+  font-weight: 600;
+  border-radius: 999px;
   cursor: pointer;
   transform: translate(-50%, -50%);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  box-shadow: 0 6px 14px rgba(16,24,40,0.18);
+}
+
+.probeMarker:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  box-shadow: 0 10px 30px rgba(16,24,40,0.22);
+}
+
+.probePulse {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(37,99,235,0.12);
+  animation: pulse 2s infinite ease-out;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0.8; }
+  70% { opacity: 0.2; }
+  100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
 }

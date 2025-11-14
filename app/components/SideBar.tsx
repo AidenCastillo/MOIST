@@ -10,9 +10,9 @@ export default function SideBar() {
             </div>
             <h2>Sidebar Navigation</h2>
             <ul>
-                <li>Home</li>
-                <li>Map</li>
-                <li>Settings</li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/dashboard/settings">Settings</a></li>
                 <li><a href="/dashboard/probes">Probes Overview</a></li>
             </ul>
         </div>
