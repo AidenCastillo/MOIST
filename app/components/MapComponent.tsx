@@ -74,8 +74,10 @@ export default function MapComponent() {
 
     }, []);
 
-    // initialize probes from localStorage 'demoProbes' using lazy state initializer
-    const probes = useState<Probe[]>(() => {
+    // client-only probe loading: read localStorage inside an effect to avoid SSR issues
+    const [probes, setProbes] = useState<Probe[]>([]);
+
+    useEffect(() => {
         const demo: Probe[] = [
             { id: 1, x: 20, y: 30, data: { hydration: 78, soilMoisture: 42, temperature: 22 } },
             { id: 2, x: 50, y: 50, data: { hydration: 53, soilMoisture: 36, temperature: 19 } },
@@ -86,7 +88,8 @@ export default function MapComponent() {
             const stored = localStorage.getItem('demoProbes');
             if (!stored) {
                 localStorage.setItem('demoProbes', JSON.stringify(demo));
-                return demo;
+                setTimeout(() => setProbes(demo), 0);
+                return;
             }
 
             const parsed = JSON.parse(stored) as unknown;
@@ -109,22 +112,19 @@ export default function MapComponent() {
                     } as Probe;
                 });
                 // ensure localStorage is normalized as well
-                localStorage.setItem('demoProbes', JSON.stringify(normalized));
-                return normalized;
+                try { localStorage.setItem('demoProbes', JSON.stringify(normalized)); } catch {}
+                // defer state update to avoid calling setState synchronously inside the effect
+                setTimeout(() => setProbes(normalized), 0);
+                return;
             }
         } catch (error) {
-            // log and fallthrough to demo
             console.error('failed to read demoProbes from localStorage:', error);
         }
 
         // fallback
-        try {
-            localStorage.setItem('demoProbes', JSON.stringify(demo));
-        } catch {
-            // ignore write failures
-        }
-        return demo;
-    })[0];
+        try { localStorage.setItem('demoProbes', JSON.stringify(demo)); } catch {}
+        setTimeout(() => setProbes(demo), 0);
+    }, []);
 
     return (
         <div ref={mapRef} className={styles.mapContainer}>
