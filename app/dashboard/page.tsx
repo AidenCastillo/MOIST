@@ -1,6 +1,6 @@
 // Where user will be able to view their irrigation probes on a farm land map.
 // Will need a map component and a sidebar for navigation. will do inline for now.
-// Probes will provide data such as hydration levels, soil moisture, and temperature.
+// Probes will provide data such as hydration levels, soil Nutrience, and temperature.
 import React from 'react';
 
 // const Sidebar = dynamic(() => import('@/components/Sidebar'), { ssr: false });

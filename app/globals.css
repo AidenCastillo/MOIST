@@ -3,6 +3,8 @@
 :root {
   --bg: #f7f9fb;
   --surface: #ffffff;
+  --pronounced-surface: #f0f4ff;
+  --pronounced-border: #dbe4ff;
   --muted: #6b7280;
   --fg: #0f172a;
   --primary: #2563eb; /* blue-600 */

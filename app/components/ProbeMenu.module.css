@@ -1,0 +1,30 @@
+.probeMenu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: var(--muted);
+    padding: 20px;
+    border: 1px solid var(--pronounced-border);
+    z-index: 1000;
+    color: black;
+    border-radius: 12px;
+}
+.moveHandle {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: move;
+    color: var(--fg);
+}
+.closeButton {
+    margin-top: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}

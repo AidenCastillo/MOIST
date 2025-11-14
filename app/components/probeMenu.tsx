@@ -1,17 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import style from './ProbeMenu.module.css';
 
-export default function ProbeMenu({ data, onClose }: { data: { hydration: number; soilMoisture: number; temperature: number } | null; onClose: () => void }) {
+export default function ProbeMenu({ data, onClose }: { data: { hydration: number; soilNutrience: number; temperature: number } | null; onClose: () => void }) {
     if (!data) return null;
     return (
-        <div style={{ position: 'absolute', top: '10%', left: '10%', backgroundColor: 'white', padding: '20px', border: '1px solid black', zIndex: 1000, color: 'black' }}>
-            <button style={{ position: 'absolute', top: '5px', right: '5px' }} onMouseDown={moveMenu()}>&#x2630;</button>
+        <div className={style.probeMenu}>
+            <button className={style.moveHandle} onMouseDown={moveMenu()}>&#x2630;</button>
             <h2>Probe Data</h2>
             <p>Hydration: {data.hydration}%</p>
-            <p>Soil Moisture: {data.soilMoisture}%</p>
+            <p>Soil Nutrience: {data.soilNutrience}%</p>
             <p>Temperature: {data.temperature}°C</p>
-            <button onClick={onClose}>Close</button>
+            <button className={style.closeButton} onClick={onClose}>Close</button>
         </div>
     );
 

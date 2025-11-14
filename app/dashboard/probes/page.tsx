@@ -10,7 +10,7 @@ interface ProbeType {
     id: number;
     x: number;
     y: number;
-    data?: { hydration: number; soilMoisture: number; temperature: number };
+    data?: { hydration: number; soilNutrience: number; temperature: number };
 }
 
 export default function ProbesPage() {
@@ -18,9 +18,9 @@ export default function ProbesPage() {
 
     useEffect(() => {
         const demo: ProbeType[] = [
-            { id: 1, x: 20, y: 30, data: { hydration: 75, soilMoisture: 60, temperature: 22 } },
-            { id: 2, x: 50, y: 60, data: { hydration: 80, soilMoisture: 65, temperature: 24 } },
-            { id: 3, x: 80, y: 20, data: { hydration: 90, soilMoisture: 30, temperature: 20 } },
+            { id: 1, x: 20, y: 30, data: { hydration: 75, soilNutrience: 60, temperature: 22 } },
+            { id: 2, x: 50, y: 60, data: { hydration: 80, soilNutrience: 65, temperature: 24 } },
+            { id: 3, x: 80, y: 20, data: { hydration: 90, soilNutrience: 30, temperature: 20 } },
         ];
 
         try {
@@ -47,7 +47,7 @@ export default function ProbesPage() {
             if (p.id === id) {
                 const newData = {
                     hydration: 100,
-                    soilMoisture: p.data?.soilMoisture ?? 0,
+                    soilNutrience: p.data?.soilNutrience ?? 0,
                     temperature: p.data?.temperature ?? 0,
                 };
                 return { ...p, data: newData };
@@ -63,12 +63,25 @@ export default function ProbesPage() {
             {/* <SideBar /> */}
             <h1>Irrigation Probes Overview</h1>
             <p>This page will provide a summary of all irrigation probes.</p>
+            <div className={styles.OverviewSection}>
+                <h2>Overall Summary</h2>
+                <p>Total Probes: {probes.length}</p>
+                <p>
+                    Average Hydration: {probes.length > 0 ? (probes.reduce((sum, p) => sum + (p.data?.hydration ?? 0), 0) / probes.length).toFixed(2) : 'N/A'}%
+                </p>
+                <p>
+                    Average Soil Nutrience: {probes.length > 0 ? (probes.reduce((sum, p) => sum + (p.data?.soilNutrience ?? 0), 0) / probes.length).toFixed(2) : 'N/A'}%
+                </p>
+                <p>
+                    Average Temperature: {probes.length > 0 ? (probes.reduce((sum, p) => sum + (p.data?.temperature ?? 0), 0) / probes.length).toFixed(2) : 'N/A'}°C
+                </p>
+            </div>
             <div className={styles.probesGrid}>
                 {probes.map((probe) => (
                     <div key={probe.id} className={styles.probeCard}>
                         <h2>Probe ID: {probe.id}</h2>
                         <p>Hydration: {probe.data?.hydration}%</p>
-                        <p>Soil Moisture: {probe.data?.soilMoisture}%</p>
+                        <p>Soil Nutrience: {probe.data?.soilNutrience}%</p>
                         <p>Temperature: {probe.data?.temperature}°C</p>
                         <button className={styles.waterButton} onClick={() => waterProbe(probe.id)}>Water now</button>
                     </div>

@@ -15,7 +15,7 @@ interface Probe {
     y: number;
     data?: {
         hydration: number;
-        soilMoisture: number;
+        soilNutrience: number;
         temperature: number;
     };
 }
@@ -26,8 +26,8 @@ function ProbeComponent({ id, x, y, data }: Probe) {
     useEffect(() => {
         if (probeRef.current) {
             // guard for possibly-missing data coming from localStorage
-            const safe = data ?? { hydration: 0, soilMoisture: 0, temperature: 0 };
-            probeRef.current.title = `Hydration: ${safe.hydration}%, Soil Moisture: ${safe.soilMoisture}%, Temperature: ${safe.temperature}°C`;
+            const safe = data ?? { hydration: 0, soilNutrience: 0, temperature: 0 };
+            probeRef.current.title = `Hydration: ${safe.hydration}%, Soil Nutrience: ${safe.soilNutrience}%, Temperature: ${safe.temperature}°C`;
         }
     }, [x, y, data]);
     return (
@@ -79,9 +79,9 @@ export default function MapComponent() {
 
     useEffect(() => {
         const demo: Probe[] = [
-            { id: 1, x: 20, y: 30, data: { hydration: 78, soilMoisture: 42, temperature: 22 } },
-            { id: 2, x: 50, y: 50, data: { hydration: 53, soilMoisture: 36, temperature: 19 } },
-            { id: 3, x: 75, y: 20, data: { hydration: 61, soilMoisture: 44, temperature: 20 } }
+            { id: 1, x: 20, y: 30, data: { hydration: 78, soilNutrience: 42, temperature: 22 } },
+            { id: 2, x: 50, y: 50, data: { hydration: 53, soilNutrience: 36, temperature: 19 } },
+            { id: 3, x: 75, y: 20, data: { hydration: 61, soilNutrience: 44, temperature: 20 } }
         ];
 
         try {
@@ -106,7 +106,7 @@ export default function MapComponent() {
                         y,
                         data: {
                             hydration: typeof dataObj.hydration === 'number' ? (dataObj.hydration as number) : 0,
-                            soilMoisture: typeof dataObj.soilMoisture === 'number' ? (dataObj.soilMoisture as number) : 0,
+                            soilNutrience: typeof dataObj.soilNutrience === 'number' ? (dataObj.soilNutrience as number) : 0,
                             temperature: typeof dataObj.temperature === 'number' ? (dataObj.temperature as number) : 0,
                         }
                     } as Probe;
