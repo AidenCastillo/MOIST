@@ -1,0 +1,39 @@
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 300px; /* account for sidebar */
+}
+
+.leaderboard_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.leaderboard_header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.rank {
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.name {
+    flex-grow: 1;
+    padding: 0 10px;
+    font-weight: bold;
+}
+
+.score {
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+

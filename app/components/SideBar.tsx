@@ -2,6 +2,12 @@
 import styles from './SideBar.module.css';
 import Image from 'next/image';
 
+function NavigationButton(title: string, link: string) {
+    return (
+        <a href={link} className={styles.navItem}>{title}</a>
+    )
+}
+
 export default function SideBar() {
     return (
         <div className={styles.sidebar}>
@@ -10,10 +16,10 @@ export default function SideBar() {
             </div>
             <h2>Sidebar Navigation</h2>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/dashboard">Dashboard</a></li>
-                <li><a href="/dashboard/settings">Settings</a></li>
-                <li><a href="/dashboard/probes">Probes Overview</a></li>
+                <li>{NavigationButton('Home', '/')}</li>
+                <li>{NavigationButton('Dashboard', '/dashboard')}</li>
+                <li>{NavigationButton('Probes', '/probes')}</li>
+                <li>{NavigationButton('Leaderboard', '/leaderboard')}</li>
             </ul>
         </div>
     )

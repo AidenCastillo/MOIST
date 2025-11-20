@@ -14,7 +14,7 @@ export default function DashboardPage() {
     <div className={styles.dashboard}>
         {/* <SideBar /> */}
         <h1>Farm Land Irrigation Dashboard</h1>
-        <p>View and monitor your irrigation probes on the map below.</p>
+        <p>View and monitor your irrigation probes on the map below. Click +Add Probe then click on the map to place the new probe.</p>
         <MapComponent />
     </div>
   );

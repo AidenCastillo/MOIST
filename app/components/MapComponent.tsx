@@ -58,6 +58,58 @@ function ProbeComponent({ id, x, y, data }: Probe) {
     }
 }
 
+function addProbe() {
+    // add a new probe at given postion by prompting user to click on map
+    const mapElement = document.querySelector(`.${styles.mapContainer}`) as HTMLElement | null;
+    if (!mapElement) return;
+    const handleClick = (event: MouseEvent) => {
+        const rect = mapElement.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        // add probe to localStorage
+        try {
+            const stored = localStorage.getItem('demoProbes');
+            let probes: Probe[] = [];
+            if (stored) {
+                const parsed = JSON.parse(stored) as unknown;
+                if (Array.isArray(parsed)) {
+                    probes = parsed.map((p: unknown, i: number) => {
+                        const obj = (p as Record<string, unknown>) || {};
+                        const id = typeof obj.id === 'number' ? (obj.id as number) : i + 1;
+                        const x = typeof obj.x === 'number' ? (obj.x as number) : 10 * (i + 1);
+                        const y = typeof obj.y === 'number' ? (obj.y as number) : 10 * (i + 1);
+                        const dataObj = (obj.data as Record<string, unknown>) || {};
+                        return {
+                            id,
+                            x,
+                            y,
+                            data: {
+                                hydration: typeof dataObj.hydration === 'number' ? (dataObj.hydration as number) : 50,
+                                soilNutrience: typeof dataObj.soilNutrience === 'number' ? (dataObj.soilNutrience as number) : 50,
+                                temperature: typeof dataObj.temperature === 'number' ? (dataObj.temperature as number) : 20,
+                            }
+                        } as Probe;
+                    });
+                }
+            }
+            probes.push({ id: probes.length + 1, x, y, data: { hydration: 50, soilNutrience: 50, temperature: 20 } });
+            localStorage.setItem('demoProbes', JSON.stringify(probes));
+        } catch (error) {
+            console.error('Failed to add probe:', error);
+        }
+        // cleanup
+        mapElement.removeEventListener('click', handleClick);
+        mapElement.style.cursor = 'default';
+        // refresh the page to show the new probe
+        window.location.reload();
+    };
+    mapElement.style.cursor = 'crosshair';
+    mapElement.addEventListener('click', handleClick);
+
+    
+
+}
+
 export default function MapComponent() {
     const mapRef = useRef<HTMLDivElement>(null);
 
@@ -128,6 +180,9 @@ export default function MapComponent() {
 
     return (
         <div ref={mapRef} className={styles.mapContainer}>
+            <div className={styles.addProbe}>
+                <button onClick={() => addProbe()}>+ Add Probe</button>
+            </div>
             {probes.map((probe) => (
                 <ProbeComponent key={probe.id} {...probe} />
             ))}
