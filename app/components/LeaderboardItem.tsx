@@ -8,7 +8,7 @@ function ProgressBar({ score }: { score: number }) {
     );
 }
 
-export function LeaderboardItem({ rank, name, score }) {
+export function LeaderboardItem({ rank, name, score }: { rank: number; name: string; score: number }) {
     return (
         <div className={styles.leaderboardItem}>
             <span className={styles.rank}>{rank}</span>
