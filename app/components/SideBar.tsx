@@ -19,6 +19,8 @@ export default function SideBar() {
                 <li>{NavigationButton('Home', '/')}</li>
                 <li>{NavigationButton('Dashboard', '/dashboard')}</li>
                 <li>{NavigationButton('Probes', '/probes')}</li>
+                <li>{NavigationButton('Scheduler', '/scheduler')}</li>
+                <li>{NavigationButton('Weather', '/weather')}</li>
                 <li>{NavigationButton('Leaderboard', '/leaderboard')}</li>
             </ul>
         </div>

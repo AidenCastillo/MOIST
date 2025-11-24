@@ -11,7 +11,9 @@ function loadDemoDataClientSide() {
     { id: 2, x: 50, y: 60, data: { hydration: 80, soilNutrience: 65, temperature: 24 } },
     { id: 3, x: 80, y: 20, data: { hydration: 90, soilNutrience: 30, temperature: 20 } },
   ];
-  try { localStorage.setItem("demoProbes", JSON.stringify(demoProbes)); } catch {}
+  try { localStorage.setItem("demoProbes", JSON.stringify(demoProbes)); 
+    localStorage.setItem("demoProbeHistory", JSON.stringify([]));
+  } catch {}
 }
 
 export default function Home() {

@@ -1,0 +1,28 @@
+.weatherPage {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 300px; /* account for sidebar */
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid rgba(2,6,23,0.04);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 8px 20px rgba(2,6,23,0.06);
+}
+
+.weatherCards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.weatherCard {
+    background: var(--surface);
+    border: 1px solid rgba(2,6,23,0.04);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 8px 20px rgba(2,6,23,0.06);
+}

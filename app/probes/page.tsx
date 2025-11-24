@@ -13,6 +13,12 @@ interface ProbeType {
     data?: { hydration: number; soilNutrience: number; temperature: number };
 }
 
+interface ProbeHistoryEntry {
+    id: number;
+    action: 'watered' | string;
+    timestamp: number;
+}
+
 export default function ProbesPage() {
     const [probes, setProbes] = useState<ProbeType[]>([]);
 
@@ -50,12 +56,21 @@ export default function ProbesPage() {
                     soilNutrience: p.data?.soilNutrience ?? 0,
                     temperature: p.data?.temperature ?? 0,
                 };
+                // defer history update to avoid blocking UI
+                setTimeout(() => {
+                    try {
+                        const parsed = JSON.parse(localStorage.getItem('demoProbeHistory') || '[]');
+                        const existing = Array.isArray(parsed) ? (parsed as ProbeHistoryEntry[]) : [] as ProbeHistoryEntry[];
+                        existing.push({ id, action: 'watered', timestamp: Date.now() });
+                        localStorage.setItem('demoProbeHistory', JSON.stringify(existing));
+                    } catch {}
+                }, 0);
                 return { ...p, data: newData };
             }
             return p;
         });
-        try { localStorage.setItem('demoProbes', JSON.stringify(updated)); } catch {}
         setProbes(updated);
+        localStorage.setItem('demoProbes', JSON.stringify(updated));
     };
 
     return (

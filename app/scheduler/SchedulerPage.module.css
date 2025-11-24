@@ -1,0 +1,30 @@
+.schedulerPage {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 300px; /* account for sidebar */
+}
+
+.recommendationCard {
+    background: var(--surface);
+    border: 1px solid rgba(2,6,23,0.04);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 8px 20px rgba(2,6,23,0.06);
+}
+
+.scheduleCard {
+    background: var(--surface);
+    border: 1px solid rgba(2,6,23,0.04);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 8px 20px rgba(2,6,23,0.06);
+}
+
+.history {
+    background: var(--surface);
+    border: 1px solid rgba(2,6,23,0.04);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 8px 20px rgba(2,6,23,0.06);
+}
