@@ -1,0 +1,89 @@
+/* Landing page styles for MOIST */
+.container {
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  /* color: #0f172a; */
+  padding-left: 300px; /* account for sidebar */
+}
+
+.hero {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.heroImage {
+  flex: 0 0 150px;
+  display: block;
+  border-radius: 8px;
+}
+
+.heroContent {
+  flex: 1;
+}
+
+.title {
+  font-size: 2.25rem;
+  line-height: 1.05;
+  margin: 0 0 0.5rem 0;
+}
+
+.lead {
+  margin: 0.5rem 0 1rem 0;
+  color: var(--text-secondary);
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.6rem 1rem;
+  background-color: #16a34a; /* green */
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.section {
+  background: var(--surface);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+}
+
+.section h2 {
+  margin: 0 0 0.5rem 0;
+}
+
+.featuresList,
+.installationList,
+.leaderboardList {
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin: 0.5rem 0 0 0;
+  color: var(--text-primary);
+}
+
+.small { font-size: 0.95rem; color: var(--text-secondary) }
+
+.footer {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: #475569;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .hero { flex-direction: column; align-items: center; }
+  .heroImage { margin-bottom: 0.75rem; }
+  .container { padding: 1rem; }
+}
