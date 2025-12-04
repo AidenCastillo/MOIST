@@ -1,6 +1,8 @@
 "use client";
 import React from 'react';
 import styles from './SchedulerPage.module.css'
+import WateringGrid from './WateringGrid';
+import SingleMonthGrid from './SingleMonthGrid';
 
 interface ProbeHistoryEntry {
     id: number;
@@ -81,6 +83,8 @@ export default function SchedulerPage() {
     return (
         <div className={styles.schedulerPage}>
             <h1>Scheduler Page</h1>
+            <WateringGrid />
+            <SingleMonthGrid />
             <RecommendationCard />
             <ScheduleCard />
             <History />

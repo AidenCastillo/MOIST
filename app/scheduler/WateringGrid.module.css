@@ -1,0 +1,39 @@
+.gridWrap {
+  background: var(--surface);
+  border: 3px solid rgba(255, 255, 255, 0.041);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 8px 20px rgba(2,6,23,0.06);
+}
+
+.gridTitle { margin: 0 0 8px 0; font-weight: 600; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(31, 14px);
+  gap: 6px;
+  align-items: center;
+}
+
+.day {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: #ebf1ff; /* light */
+  border: 1px solid rgba(2,6,23,0.04);
+}
+
+.level0 { background: #ebf1ff; }
+.level1 { background: #cfe0ff; }
+.level2 { background: #9fc0ff; }
+.level3 { background: #5b9cff; }
+.level4 { background: #2563eb; }
+
+.legend { display:flex; gap:8px; align-items:center; margin-top:10px; font-size:12px; color:var(--muted); }
+.legendItem { display:flex; gap:6px; align-items:center }
+.legendSwatch { width:14px; height:14px; border-radius:3px; border:1px solid rgba(2,6,23,0.04) }
+
+@media (max-width: 880px) {
+  .grid { grid-template-columns: repeat(31, 10px); gap: 4px }
+  .day, .legendSwatch { width:10px; height:10px }
+}
