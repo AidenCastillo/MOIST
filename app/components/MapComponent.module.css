@@ -48,3 +48,28 @@
   70% { opacity: 0.2; }
   100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
 }
+
+.addProbe {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: var(--surface);
+  border: 1px solid rgba(2,6,23,0.08);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(2,6,23,0.1);
+}
+
+
+/* 
+@media (max-width: 600px) {
+  .probeMarker {
+    width: 24px;
+    height: 24px;
+    font-size: 0.85rem;
+  }
+
+  .probePulse {
+    width: 36px;
+    height: 36px;
+  }
+} */

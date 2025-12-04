@@ -2,29 +2,67 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    background-color: var(--muted);
-    padding: 20px;
+    /* transform: translate(-50%, -50%); */
+    background: var(--surface);
+    padding: 16px;
     border: 1px solid var(--pronounced-border);
+    border-radius: var(--radius);
     z-index: 1000;
-    color: black;
-    border-radius: 12px;
+    color: var(--fg);
+    box-shadow: 0 16px 40px rgba(2, 6, 23, 0.4);
+    min-width: 280px;
 }
-.moveHandle {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: move;
+
+.probeMenu h2 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    font-weight: 600;
     color: var(--fg);
 }
+
+.probeMenu p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.moveHandle {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: move;
+    color: var(--muted);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.moveHandle:hover {
+    color: var(--fg);
+}
+
 .closeButton {
     margin-top: 12px;
     background: var(--primary);
     color: white;
     border: none;
     padding: 8px 12px;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    width: 100%;
+}
+
+.closeButton:hover {
+    background: color-mix(in srgb, var(--primary) 85%, white);
+}
+
+.closeButton:active {
+    background: color-mix(in srgb, var(--primary) 75%, white);
 }

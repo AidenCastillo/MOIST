@@ -62,10 +62,22 @@ function addProbe() {
     // add a new probe at given postion by prompting user to click on map
     const mapElement = document.querySelector(`.${styles.mapContainer}`) as HTMLElement | null;
     if (!mapElement) return;
+    const addButton = mapElement.querySelector(`.${styles.addProbe} button`);
+        if (addButton) {
+            addButton.textContent = 'Click on map to place probe...';
+        }   
     const handleClick = (event: MouseEvent) => {
         const rect = mapElement.getBoundingClientRect();
         const x = ((event.clientX - rect.left) / rect.width) * 100;
         const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+
+        if (x < 0 || x > 100 || y < 0 || y > 100) {
+            // clicked outside map
+            mapElement.removeEventListener('click', handleClick);
+            mapElement.style.cursor = 'default';
+            return;
+        }
         // add probe to localStorage
         try {
             const stored = localStorage.getItem('demoProbes');
