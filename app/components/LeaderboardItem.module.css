@@ -8,6 +8,19 @@
     background: rgba(37,99,235,0.06);
     color: var(--fg);
 }
+.leaderboardItem { position: relative; }
+
+.current {
+  /* subtle translucent overlay when this is the current user's row */
+  background: rgba(16,185,129,0.02);
+}
+.current::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(16,185,129,0.06);
+  pointer-events: none;
+}
 .rank {
   width: 50px;
   text-align: center;
@@ -15,6 +28,32 @@
 .name {
   flex-grow: 1;
   padding: 0 10px;
+}
+.youBadge {
+  display: inline-block;
+  margin-left: 8px;
+  background: transparent;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(16,185,129,0.12);
+  position: relative;
+  z-index: 5;
+}
+
+/* cover up the row bottom border that would otherwise show under the badge */
+.youBadge::after {
+  content: "";
+  position: absolute;
+  left: -0px;
+  right: -15px;
+  bottom: -13px;
+  height: 4px;
+  background: var(--bg);
+  pointer-events: none;
+  border-radius: 4px;
 }
 .score {
   width: 50px;
@@ -31,5 +70,11 @@
     background-color: #e0e0e0;
     border-radius: 5px;
     overflow: hidden;
+}
+
+.progressBar {
+    height: 100%;
+    background-color: var(--primary);
+    transition: width 0.3s ease-in-out;
 }
 

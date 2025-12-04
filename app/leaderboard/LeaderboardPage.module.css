@@ -6,10 +6,18 @@
 }
 
 .leaderboard_container {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 24px;
+    align-items: start;
+    padding: 12px 20px;
+}
+
+.leaderboard_list {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
+    padding: 8px 0;
 }
 
 .leaderboard_header {
@@ -37,3 +45,29 @@
     font-weight: bold;
 }
 
+.leaderboardBenefitsCard {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 8px 20px rgba(2,6,23,0.06);
+    border: 3px solid rgba(255, 255, 255, 0.192);
+    align-self: start;
+    max-width: 100%;
+    
+}
+.leaderboardBenefitsList {
+    list-style: disc;
+    padding-left: 1.2rem;
+    margin: 0.5rem 0 0 0;
+    color: var(--text-primary);
+    
+}
+
+@media (max-width: 900px) {
+    .leaderboard_container {
+        grid-template-columns: 1fr;
+    }
+    .leaderboardBenefitsCard {
+        margin-top: 8px;
+    }
+}
