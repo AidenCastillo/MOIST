@@ -58,6 +58,7 @@
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+  border: 3px solid rgba(255, 255, 255, 0.041);
 }
 
 .section h2 {
